@@ -1,7 +1,45 @@
-@(message: String)
+@(message: String, movies: List[models.Movie], users: List[models.User])
 
 @main("Welcome to Play") {
-
-    @play20.welcome(message, style = "Java")
+	<h1>Add Movie</h1>
+    <form action="/addMovie" method="post">
+    	<input name="title"/> title <br>   	    	    	    	    	    	    	    	        	
+    	<input type="submit"/>
+    </form>
+    
+    @if(movies.isEmpty()) {
+  	<h1>Nothing to display</h1>
+		} else {
+  	<h1>@movies.size() movies in DB!</h1>
+	}
+	
+	<ul>
+	@for(m <- movies) {
+  		<li>@m.getTitle() </li>
+	} 
+	</ul>
+	
+	<br><br><br><br><br><br>
+	
+	<h1>Add User</h1>
+	
+	<form action="/addUser" method="post">
+    	<input name="name"/> name <br>
+    	<input name="email"/> email <br>      	    	    	    	    	    	    	    	        	
+    	<input type="submit"/>
+    </form>
+    
+        @if(users.isEmpty()) {
+  	<h1>Nothing to display</h1>
+		} else {
+  	<h1>@users.size() Users: </h1>
+	}
+	
+	<ul>
+	@for(u <- users) {
+  		<li>@u.getName @u.getEmail() </li>
+	} 
+	</ul>
+	
 
 }
