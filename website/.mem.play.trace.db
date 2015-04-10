@@ -1,0 +1,8 @@
+04-07 20:41:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "USER" nicht gefunden
+Table "USER" not found; SQL statement:
+select * from user [42102-175]
+04-07 20:41:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "MOVIE" nicht gefunden
+Table "MOVIE" not found; SQL statement:
+select * from movie [42102-175]

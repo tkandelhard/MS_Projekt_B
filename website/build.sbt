@@ -10,5 +10,8 @@ libraryDependencies ++= Seq(
   javaJdbc,
   javaEbean,
   cache,
-  javaWs
+  javaWs,
+  "org.glassfish.jersey.core" % "jersey-client" % "2.8",
+  "info.movito" % "themoviedbapi" % "1.1"
 )
+
