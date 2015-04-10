@@ -8,8 +8,11 @@ import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Update;
 
 import info.movito.themoviedbapi.TmdbApi;
+import info.movito.themoviedbapi.TmdbDiscover;
 import info.movito.themoviedbapi.TmdbMovies;
+import info.movito.themoviedbapi.model.Discover;
 import info.movito.themoviedbapi.model.MovieDb;
+import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import play.*;
 import play.data.Form;
 import play.libs.Json;
@@ -46,10 +49,18 @@ public class Application extends Controller {
     	return ok(Json.toJson(movies));
     }
     
-    public static Result addTmdbMovie() {
+    //noch nicht komplett
+    public static Result searchTmdbMovie() {
     	TmdbMovies movies = new TmdbApi("d6478dc62b65b51cbde03570490a69cc").getMovies();
     	MovieDb movie = movies.getMovie(5353, "en");
     	System.out.println(movie.getOriginalTitle());
+    	return redirect(routes.Application.index());
+    }
+    
+    public static Result discoverTmdbMovies() {
+    	TmdbDiscover discovers = new TmdbApi("d6478dc62b65b51cbde03570490a69cc").getDiscover();
+    	MovieResultsPage results = discovers.getDiscover(new Discover());
+    	System.out.println(results.getResults());   	
     	return redirect(routes.Application.index());
     }
     
