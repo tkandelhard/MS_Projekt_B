@@ -10,3 +10,21 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+website/logs
+website/project/project
+website/project/target
+website/target
+website/tmp
+website/.history
+website/dist
+website/.idea
+website/*.iml
+website/out
+website/.idea_modules
+website/.classpath
+website/.project
+website/RUNNING_PID
+website/.settings
+website/bin/
+website/activator.bat

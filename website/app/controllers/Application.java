@@ -64,5 +64,15 @@ public class Application extends Controller {
     	return redirect(routes.Application.index());
     }
     
+    public static Result addMovieRatingOne() {
+    	Movie.rateMovieWithOne(1L, 1L);
+    	return redirect(routes.Application.index());
+    }
+    
+public static Result allRatedOne() {
+    	
+    	return redirect(routes.Application.index());
+    }
+    
 
 }

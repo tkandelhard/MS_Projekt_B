@@ -9,6 +9,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.avaje.ebean.Ebean;
+
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
 @Entity
@@ -31,14 +33,14 @@ public class Movie extends Model{
 	public String ratingOverall;
 
 	@ManyToMany(cascade=CascadeType.ALL)
-	public User movieScoreOne;
+	List<User> userRatingOne;
 	
-	public User getMovieScoreOne() {
-		return movieScoreOne;
-	}
-	public void setMovieScoreOne(User movieScoreOne) {
-		this.movieScoreOne = movieScoreOne;
-	}
+	@ManyToMany(cascade=CascadeType.ALL)
+	List<User> userRatingTwo;
+	
+	@ManyToMany(cascade=CascadeType.ALL)
+	List<User> userRatingThree;
+	
 	public String getSummary() {
 		return summary;
 	}
@@ -64,5 +66,18 @@ public class Movie extends Model{
 		this.movieId = movieId;
 	}
 	
+	public static Finder<Long,Movie> find = new Finder<Long,Movie>(Long.class, Movie.class);
+	
+	public static void rateMovieWithOne(Long movieId, Long userId) {
+		Movie movie = Ebean.find(Movie.class, movieId);
+		User user = Ebean.find(User.class, userId);
+		
+		List<Movie> userRatingOneList = user.getMoviesRatedOne();
+		
+		userRatingOneList.add(movie);
+		
+		Ebean.save(user);
+
+	}
 	
 }

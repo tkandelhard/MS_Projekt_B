@@ -23,7 +23,20 @@ public class User extends Model{
 	public String email;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
-	public Movie movieScoreOne;
+	List<Movie> moviesRatedOne;
+	
+	public List<Movie> getMoviesRatedOne() {
+		return moviesRatedOne;
+	}
+	public void setMoviesRatedOne(List<Movie> moviesRatedOne) {
+		this.moviesRatedOne = moviesRatedOne;
+	}
+
+	@ManyToMany(cascade=CascadeType.ALL)
+	List<Movie> moviesRatedTwo;
+	
+	@ManyToMany(cascade=CascadeType.ALL)
+	List<Movie> moviesRatedThree;
 	
 	public String getName() {
 		return name;
@@ -44,5 +57,6 @@ public class User extends Model{
 		this.userId = userId;
 	}
 	
+	public static Finder<Long,User> find = new Finder<Long,User>(Long.class, User.class);
 	
 }
