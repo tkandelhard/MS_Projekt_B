@@ -68,6 +68,12 @@ public class Movie extends Model{
 	
 	public static Finder<Long,Movie> find = new Finder<Long,Movie>(Long.class, Movie.class);
 	
+	/**
+	*
+	* Hier wird ein Film mit 1 bewertet, indem die Beziehung in die Sequenz-Tabelle von dieser ManyToMany-Beziehung geschrieben wird.
+	*
+	*/
+	
 	public static void rateMovieWithOne(Long movieId, Long userId) {
 		Movie movie = Ebean.find(Movie.class, movieId);
 		User user = Ebean.find(User.class, userId);
@@ -75,9 +81,7 @@ public class Movie extends Model{
 		List<Movie> userRatingOneList = user.getMoviesRatedOne();
 		
 		userRatingOneList.add(movie);
-		
 		Ebean.save(user);
-
 	}
 	
 }

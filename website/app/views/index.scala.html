@@ -15,11 +15,11 @@
 	
 	<ul>
 	@for(m <- movies) {
-  		<li>@m.getTitle() </li>
+  		<li>@m.getTitle() @m.getMovieId() </li>
 	} 
 	</ul>
 	
-	<br><br><br><br><br><br>
+	<br><br><br>
 	
 	<h1>Add User</h1>
 	
@@ -45,17 +45,11 @@
     	<input type="submit"/>
     </form>
     
-    <h1>Rate a movie with 1</h1>
-    /**NOT WORKING
-    <form action="/addMovieRatingOne" method="post">
-    	<input name="UserId"/> UserId <br>
-    	<input name="MovieId"/>MovieId<br>      	    	    	    	    	    	    	    	        	
-    	<input type="submit"/>
-    </form>
+    <br><br><br>
     
-	**/NOT WORKING
+    <h1>Rate a movie with 1</h1>
 	
-		<form action="/addMovieRatingOne" method="post">   	    	    	    	    	    	    	    	        	
+	<form action="/addMovieRatingOne" method="post">   	    	    	    	    	    	    	    	        	
     	<input type="submit"/>
     </form>
 	
